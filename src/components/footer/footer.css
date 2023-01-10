@@ -1,0 +1,33 @@
+.footerContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* width: 100vw; */
+	height: 10vh;
+	background-color: #343a40;
+	color: #ffffff;
+}
+
+.footerContent {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	gap: 5rem;
+}
+
+.footerContent > p > a {
+	text-decoration: none;
+	color: #c8c8ff;
+}
+
+.footerContent > p > a:hover {
+	color: #a9a9ff;
+	text-decoration: underline;
+}
+
+.footerCopyRight {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

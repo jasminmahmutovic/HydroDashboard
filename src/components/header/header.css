@@ -1,0 +1,25 @@
+.container {
+	/* width: 100vw; */
+	height: 10vh;
+	background-color: #343a40;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+}
+
+.container > img {
+	width: 10%;
+	margin: 1rem;
+	object-fit: contain;
+}
+
+.tooltip {
+	margin: 1rem;
+	font-size: 1.5rem;
+}
+
+.tooltip:hover {
+	cursor: pointer;
+	color: #b6b6b6;
+}
