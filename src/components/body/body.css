@@ -1,15 +1,27 @@
 .bodyContainer {
-	height: 80vh;
 	/* width: 100vw; */
-	background-color: #dbdada;
+	background-color: #e6e6e6;
+}
+
+.bodyContainer > h1 {
+	margin-left: 2rem;
+}
+
+.buttonContainer {
+	padding: 1rem;
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: row;
 	gap: 1rem;
 }
 
-.buttonContainer {
+.buttonContainer2 {
+	padding: 1rem;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+.buttonStyles {
 	border: none;
 	width: auto;
 	height: auto;

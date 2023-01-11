@@ -5,7 +5,7 @@ import { Tooltip } from "antd";
 import { QuestionCircleFilled } from "@ant-design/icons";
 
 //Assets
-import Logo from "../../assets/hydroware_logotype_white.png";
+import Logo from "../../assets/hydroware_logotype_black.png";
 
 //Custom stylesheet(s)
 import "./header.css";
