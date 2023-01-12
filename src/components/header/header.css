@@ -25,3 +25,25 @@
 	cursor: pointer;
 	color: #535353;
 }
+
+.rightSideHeader {
+	margin-right: 2rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.loginButton {
+	cursor: pointer;
+	font-size: 1.5rem;
+	color: black;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.loginButton:hover {
+	text-decoration: underline;
+}

@@ -6,7 +6,6 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: flex-start;
-	/* width: 100vw; */
 	height: 10vh;
 	background-color: #f7f7f7;
 	color: #000000;
@@ -21,34 +20,26 @@
 }
 
 .footerInformation {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	gap: 5rem;
-}
-
-.footerInformation > p > a {
-	text-decoration: none;
-	color: #8989ff;
-}
-
-.footerInformation > p > a:hover {
-	color: #3232ff;
-	text-decoration: underline;
-}
-
-.footerCopyRight {
-	display: flex;
+	display: grid;
+	margin-left: 1rem;
+	grid-template-columns: 0.02fr 1fr;
+	grid-template-rows: 0.01fr 0px;
 	justify-content: center;
 	align-items: center;
 }
 
-.footerLoginContainer {
-	padding-left: 2rem;
+.footerInformation > p > a {
+	text-decoration: none;
+	color: #000000;
 }
 
-.footerLoginContainer:hover {
-	color: #3232ff;
+.footerInformation > p > a:hover {
+	color: #c50068;
 	text-decoration: underline;
-	cursor: pointer;
+}
+
+.footerCopyRight {
+	position: absolute;
+	bottom: 0%;
+	left: 43%;
 }
