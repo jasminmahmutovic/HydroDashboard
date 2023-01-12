@@ -1,0 +1,74 @@
+---
+# Lokalt
+- name: build application
+  hosts: localhost
+  tasks:
+    # Gör en ny build
+    - name: build application
+      shell: >
+        {{playbook_dir}}/buildnode.sh
+      
+    # Spara ner imagen som en tar boll
+    - name: save docker image
+      docker_image: 
+        name: hydro_dashboard
+        tag: latest
+        archive_path: "{{playbook_dir}}/hydro_dashboard.tar"
+        source: local
+
+    # Ta bort image
+    - name: Delete image from local pc
+      docker_image:
+        name: hydro_dashboard
+        tag: latest
+        state: absent
+
+# Server
+- name: deploy application to server
+  hosts: webbserver
+  vars_prompt:
+    - name: username
+      prompt: Username?
+      private: no
+    - name: password
+      prompt: Password?
+  vars:
+    ansible_user: "{{ username }}"
+    ansible_ssh_pass: "{{ password }}"
+    ansible_python_interpreter: /usr/local/bin/python3.8
+  tasks:
+    # Ta bort gammal container
+    - name: Delete container from server
+      docker_container: 
+        name: hydro_dashboard
+        state: absent
+    
+    # Ta bort image
+    - name: Delete image from server
+      docker_image:
+        name: hydro_dashboard
+        tag: latest
+        state: absent
+
+    # Kopiera ny image
+    - name: Copy image to server
+      copy: 
+        src: "{{playbook_dir}}/hydro_dashboard.tar"
+        dest: "/home/jenkins/hydro_dashboard.tar"
+
+    # Ladda in imagen till docker images
+    - name: Load docker image
+      docker_image:
+        name: hydro_dashboard
+        tag: latest
+        push: no
+        load_path: "/home/jenkins/hydro_dashboard.tar"
+        source: load
+
+    # Starta image i en container
+    - name: start application
+      docker_container:
+        name: hydro_dashboard
+        image: hydro_dashboard:latest
+        ports:
+          - "{{ 9050 }}:80"
