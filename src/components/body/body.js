@@ -69,8 +69,7 @@ const Body = connect(mapStateToProps)((data) => {
 				<div className="buttonContainer">
 					<Button
 						className="buttonStyles"
-						disabled
-						// href="https://apps.hydroware.com/cmp"
+						href="https://apps.hydroware.com/cmp"
 						target="_blank"
 					>
 						<BsFillPeopleFill style={{ fontSize: "5rem", color: "#c50068" }} />
