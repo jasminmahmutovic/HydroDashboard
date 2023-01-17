@@ -10,6 +10,7 @@
 
 # production
 /build
+/development/hydro_dashboard.tar
 
 # misc
 .DS_Store

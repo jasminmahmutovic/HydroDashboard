@@ -71,4 +71,4 @@
         name: hydro_dashboard
         image: hydro_dashboard:latest
         ports:
-          - "{{ 9050 }}:80"
+          - "9050:80"
