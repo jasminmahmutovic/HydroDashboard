@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "Forza-Thin";
+  src: local("Forza-Thin"), url("../../assets/fonts/Forza-Thin.otf");
+}
+
+@font-face {
+  font-family: "Forza-Bold";
+  src: local("Forza-Bold"), url("../../assets/fonts/Forza-Bold.otf");
+}
+
+.bodyContainer {
+  background-color: #e6e6e6;
+}
+
+.appdrawerHeader > h1 {
+  margin-left: 2rem;
+  font-family: Forza-Thin;
+}
+
+.appsContainer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonStyles {
+  border: none;
+  width: auto;
+  height: auto;
+  padding: 1.5rem;
+  background-color: white;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.buttonStyles:hover {
+  margin-top: -1rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.buttonStyles:disabled {
+  margin-top: 0;
+  box-shadow: none;
+}
+
+.tooltip {
+  font-size: 1.5rem;
+}
+
+.tooltip:hover {
+  cursor: pointer;
+  color: #535353;
+}
+
+.appdrawerHeader {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+.myappsdrawerHeader {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+.myappsdrawerHeader > h1 {
+  margin-left: 2rem;
+  font-family: Forza-Thin;
+}

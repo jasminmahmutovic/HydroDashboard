@@ -1,49 +1,39 @@
 .container {
-	/* width: 100vw; */
-	height: 10vh;
-	background-color: #f7f7f7;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	color: #9c9c9c;
-	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
-		rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  /* width: 100vw; */
+  height: 10vh;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #9c9c9c;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 
 .container > img {
-	width: 10%;
-	margin: 1rem;
-	object-fit: contain;
-}
-
-.tooltip {
-	margin: 1rem;
-	font-size: 1.5rem;
-}
-
-.tooltip:hover {
-	cursor: pointer;
-	color: #535353;
+  width: 10%;
+  margin: 1rem;
+  object-fit: contain;
 }
 
 .rightSideHeader {
-	margin-right: 2rem;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .loginButton {
-	cursor: pointer;
-	font-size: 1.5rem;
-	color: black;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .loginButton:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }

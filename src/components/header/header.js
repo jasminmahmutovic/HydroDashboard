@@ -1,136 +1,132 @@
 import React from "react";
 
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 //Redux
 import { connect, useDispatch } from "react-redux";
 import * as types from "../../Store/types";
+import * as userActions from "../../Store/api/login";
+import { bindActionCreators } from "@reduxjs/toolkit";
 
 //Antd
-import { Button, Form, Input, message, Modal, Tooltip } from "antd";
+import { Button, Form, Input, Modal } from "antd";
 
 //Assets
 import { SlLogin, SlClose, SlLogout } from "react-icons/sl";
-import { QuestionCircleFilled } from "@ant-design/icons";
+
 import Logo from "../../assets/hydroware_logotype_black.png";
 
 //Custom stylesheet(s)
 import "./header.css";
 
-const mapStateToProps = (data) => {
-	return data;
+const mapStateToProps = ({ user }) => {
+  return { user };
 };
 
-const Header = connect(mapStateToProps)((data) => {
-	const dispatch = useDispatch();
-	const [form] = Form.useForm();
-	const [openModal, setOpenModal] = React.useState(false);
-	const validUser = {
-		username: "hydroware",
-		password: "kodak123",
-	};
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ ...userActions }, dispatch);
+};
 
-	const onLogout = () => {
-		if (data.user.loggedIn !== false) {
-			dispatch({ type: types.LOGOUT });
-		}
-		form.resetFields();
-		setOpenModal(false);
-	};
+const Header = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(({ user, LoginUser, GetUserOrg }) => {
+  const dispatch = useDispatch();
+  const [form] = Form.useForm();
+  const [openModal, setOpenModal] = React.useState(false);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
-	const onFinish = (values) => {
-		if (data.user.loggedIn !== true) {
-			if (
-				values.username === validUser.username &&
-				values.password === validUser.password
-			) {
-				dispatch({ type: types.SET_USER, payload: values.username });
-				form.resetFields();
-				setOpenModal(false);
-			} else {
-				return message.error("Felaktigt användarnamn eller lösenord");
-			}
-		}
-	};
+  const onLogout = () => {
+    if (user.loggedIn !== false) {
+      dispatch({ type: types.LOGOUT });
+    }
+    form.resetFields();
+    setOpenModal(false);
+  };
 
-	return (
-		<div className="container">
-			<img src={Logo} alt="Hydroware logo" />
-			<div className="rightSideHeader">
-				<Tooltip
-					className="tooltip"
-					title="Click on an application to navigate to it"
-					placement="bottomRight"
-				>
-					<QuestionCircleFilled />
-				</Tooltip>
-				{data.user.loggedIn !== true && (
-					<p className="loginButton" onClick={() => setOpenModal(true)}>
-						Login <SlLogin />
-					</p>
-				)}
-				{data.user.loggedIn !== false && (
-					<p className="loginButton" onClick={onLogout}>
-						Logout <SlLogout />
-					</p>
-				)}
-				<Modal
-					title="Logga in"
-					open={openModal}
-					footer={null}
-					closeIcon={<SlClose />}
-					onCancel={() => setOpenModal(false)}
-				>
-					<div>
-						<Form
-							form={form}
-							onFinish={onFinish}
-							labelCol={{
-								span: 8,
-							}}
-							wrapperCol={{
-								span: 16,
-							}}
-						>
-							<Form.Item
-								label="Användarnamn"
-								name="username"
-								rules={[
-									{
-										required: true,
-										message: "Vänligen skriv in ditt användarnamn",
-									},
-								]}
-							>
-								<Input />
-							</Form.Item>
-							<Form.Item
-								label="Lösenord"
-								name="password"
-								rules={[
-									{
-										required: true,
-										message: "Vänligen skriv in korrekt lösenord",
-									},
-								]}
-							>
-								<Input.Password />
-							</Form.Item>
+  const onFinish = React.useCallback(
+    async (values) => {
+      const recaptchatoken = await executeRecaptcha();
+      await LoginUser(values, recaptchatoken);
+      await GetUserOrg(values.email);
+      setOpenModal(false);
+    },
+    [executeRecaptcha]
+  );
 
-							<Form.Item
-								wrapperCol={{
-									offset: 8,
-									span: 16,
-								}}
-							>
-								<Button type="primary" htmlType="submit">
-									Logga in
-								</Button>
-							</Form.Item>
-						</Form>
-					</div>
-				</Modal>
-			</div>
-		</div>
-	);
+  return (
+    <div className="container">
+      <img src={Logo} alt="Hydroware logo" />
+      <div className="rightSideHeader">
+        {user.loggedIn !== true && (
+          <p className="loginButton" onClick={() => setOpenModal(true)}>
+            Login <SlLogin />
+          </p>
+        )}
+        {user.loggedIn !== false && (
+          <p className="loginButton" onClick={onLogout}>
+            Logout <SlLogout />
+          </p>
+        )}
+        <Modal
+          title="Logga in"
+          open={openModal}
+          footer={null}
+          closeIcon={<SlClose />}
+          onCancel={() => setOpenModal(false)}
+        >
+          <div>
+            <Form
+              form={form}
+              onFinish={onFinish}
+              labelCol={{
+                span: 8,
+              }}
+              wrapperCol={{
+                span: 16,
+              }}
+            >
+              <Form.Item
+                label="Email"
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter your email",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="Password"
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter your password",
+                  },
+                ]}
+              >
+                <Input.Password />
+              </Form.Item>
+
+              <Form.Item
+                wrapperCol={{
+                  offset: 8,
+                  span: 16,
+                }}
+              >
+                <Button type="primary" htmlType="submit">
+                  Login
+                </Button>
+              </Form.Item>
+            </Form>
+          </div>
+        </Modal>
+      </div>
+    </div>
+  );
 });
 
 export default Header;
