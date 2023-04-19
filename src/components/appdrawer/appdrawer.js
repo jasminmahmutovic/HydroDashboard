@@ -104,7 +104,7 @@ const AppDrawer = connect(mapStateToProps)((data) => {
             >
               <FaCodeBranch style={{ fontSize: "5rem", color: "#c50068" }} />
             </Button>
-            <p>Provningsappen</p>
+            <p>Lift testing application</p>
           </div>
           <div className="buttonContainer">
             <Button
