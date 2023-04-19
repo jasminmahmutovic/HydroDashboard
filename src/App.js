@@ -9,8 +9,8 @@ import Footer from "./components/footer/footer";
 
 const App = () => {
   React.useEffect(() => {
-    axios.defaults.baseURL = "https://dev.cloud.hydroware.com";
-    // axios.defaults.baseURL = "https://cloud.hydroware.com";
+    // axios.defaults.baseURL = "https://dev.cloud.hydroware.com";
+    axios.defaults.baseURL = "https://cloud.hydroware.com";
   });
   return (
     <>
