@@ -16,6 +16,7 @@ import {
   BsFileEarmarkRuledFill,
   BsFileEarmarkZipFill,
   BsFillPatchQuestionFill,
+  BsFillHouseFill,
 } from "react-icons/bs";
 
 //Antd components
@@ -32,7 +33,7 @@ const AppDrawer = connect(mapStateToProps)((data) => {
   return (
     <div className="bodyContainer">
       <div className="appdrawerHeader">
-        <h1>Apps</h1>
+        <h1>Public Apps</h1>
         <Tooltip
           className="tooltip"
           title="Click on an application to navigate to it"
@@ -45,14 +46,12 @@ const AppDrawer = connect(mapStateToProps)((data) => {
         <div className="buttonContainer">
           <Button
             className="buttonStyles"
-            href="http://www.hydroware.com/Webrel"
+            href="http://www.hydroware.com/"
             target="_blank"
           >
-            <BsFillFileEarmarkFill
-              style={{ fontSize: "5rem", color: "#c50068" }}
-            />
+            <BsFillHouseFill style={{ fontSize: "5rem", color: "#c50068" }} />
           </Button>
-          <p>WebRel</p>
+          <p>Hydroware</p>
         </div>
         <div className="buttonContainer">
           <Button
@@ -66,6 +65,16 @@ const AppDrawer = connect(mapStateToProps)((data) => {
           </Button>
           <p>HydroApp</p>
         </div>
+        <div className="buttonContainer">
+          <Button
+            className="buttonStyles"
+            href="https://www.hydroware.com/web/program/PowerUnitCalculation_Vidi/PowerUnitCalculation.htm"
+            target="_blank"
+          >
+            <BsCalculatorFill style={{ fontSize: "5rem", color: "#c50068" }} />
+          </Button>
+          <p>HydCalc - Dimensioning</p>
+        </div>
       </div>
       {data?.user?.loggedIn && data?.user?.org?.org === "hydroware" && (
         <div className="myappsdrawerHeader">
@@ -74,6 +83,19 @@ const AppDrawer = connect(mapStateToProps)((data) => {
       )}
       {data.user.loggedIn === true && data?.user?.org?.org === "hydroware" && (
         <div className="appsContainer">
+          <div className="buttonContainer">
+            <Button
+              className="buttonStyles"
+              href="http://www.hydroware.com/Webrel"
+              target="_blank"
+            >
+              <BsFillFileEarmarkFill
+                style={{ fontSize: "5rem", color: "#c50068" }}
+              />
+            </Button>
+            <p>WebRel</p>
+          </div>
+
           <div className="buttonContainer">
             <Button
               className="buttonStyles"
@@ -102,7 +124,7 @@ const AppDrawer = connect(mapStateToProps)((data) => {
             >
               <SlEarphonesAlt style={{ fontSize: "5rem", color: "#c50068" }} />
             </Button>
-            <p>Supportlog</p>
+            <p>Support log</p>
           </div>
           <div className="buttonContainer">
             <Button
@@ -114,7 +136,7 @@ const AppDrawer = connect(mapStateToProps)((data) => {
                 style={{ fontSize: "5rem", color: "#c50068" }}
               />
             </Button>
-            <p>HydCalc</p>
+            <p>HydCalc - Price Calculation</p>
           </div>
           <div className="buttonContainer">
             <Button
