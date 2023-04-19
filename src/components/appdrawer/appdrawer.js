@@ -33,7 +33,7 @@ const AppDrawer = connect(mapStateToProps)((data) => {
   return (
     <div className="bodyContainer">
       <div className="appdrawerHeader">
-        <h1>Public Apps</h1>
+        <h1>Public</h1>
         <Tooltip
           className="tooltip"
           title="Click on an application to navigate to it"
@@ -68,7 +68,7 @@ const AppDrawer = connect(mapStateToProps)((data) => {
         <div className="buttonContainer">
           <Button
             className="buttonStyles"
-            href="https://www.hydroware.com/web/program/PowerUnitCalculation_Vidi/PowerUnitCalculation.htm"
+            href="http://www.hydroware.com/web/program/PowerUnitCalculation_Vidi/PowerUnitCalculation.htm"
             target="_blank"
           >
             <BsCalculatorFill style={{ fontSize: "5rem", color: "#c50068" }} />
@@ -95,7 +95,6 @@ const AppDrawer = connect(mapStateToProps)((data) => {
             </Button>
             <p>WebRel</p>
           </div>
-
           <div className="buttonContainer">
             <Button
               className="buttonStyles"
@@ -104,7 +103,9 @@ const AppDrawer = connect(mapStateToProps)((data) => {
             >
               <FaCodeBranch style={{ fontSize: "5rem", color: "#c50068" }} />
             </Button>
-            <p>Lift testing application</p>
+            <p>
+              Lift testing <br /> application
+            </p>
           </div>
           <div className="buttonContainer">
             <Button
