@@ -1,5 +1,5 @@
 .container {
-  /* width: 100vw; */
+  width: 100%;
   height: 10vh;
   background-color: #f7f7f7;
   display: flex;
@@ -14,6 +14,16 @@
   width: 10%;
   margin: 1rem;
   object-fit: contain;
+
+  @media (min-width: 375px) and (max-width: 650px) {
+    width: 30%;
+  }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 1000px) {
+  .container > img {
+    width: 30%;
+  }
 }
 
 .rightSideHeader {
